@@ -1,18 +1,21 @@
 package rva.jpa;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import org.hibernate.annotations.NamedQuery;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 
 /**
@@ -38,7 +41,8 @@ public class Proizvod implements Serializable {
 	private Proizvodjac proizvodjac;
 
 	//bi-directional many-to-one association to StavkaRacuna
-	@OneToMany(mappedBy="proizvod")
+	@JsonIgnore //da se ne bi ponavljao jedan te isti proizvod 1000 puta kad pokrenemo host i ukucamo localhost:8083/artikl
+	@OneToMany(mappedBy="proizvod") //da se jedan artikl moze naci u vise stavki porudzbina
 	private List<StavkaRacuna> stavkaRacunas;
 
 	public Proizvod() {

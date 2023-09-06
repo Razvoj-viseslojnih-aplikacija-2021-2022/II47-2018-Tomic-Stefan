@@ -22,7 +22,7 @@ public class RestControllers {
 		return x+ " + " + y + " = " + (x+y);
 	}
 	
-	@Bean
+	/*@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) { //da vidimo sta Spring radi u pozadini
 		return args -> {
 			System.out.println("Beans provided by Spring Boot:");
@@ -34,5 +34,5 @@ public class RestControllers {
 		};
 	
 	}
-
+*/
 }

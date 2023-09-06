@@ -2,17 +2,9 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -39,6 +31,7 @@ public class Racun implements Serializable {
 	private String nacinPlacanja;
 
 	//bi-directional many-to-one association to StavkaRacuna
+	@JsonIgnore
 	@OneToMany(mappedBy="racun")
 	private List<StavkaRacuna> stavkaRacunas;
 

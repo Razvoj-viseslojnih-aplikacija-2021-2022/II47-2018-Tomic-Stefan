@@ -2,14 +2,9 @@ package rva.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -35,6 +30,7 @@ public class Proizvodjac implements Serializable {
 	private String naziv;
 
 	//bi-directional many-to-one association to Proizvod
+	@JsonIgnore
 	@OneToMany(mappedBy="proizvodjac")
 	private List<Proizvod> proizvods;
 
